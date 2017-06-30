@@ -9,12 +9,14 @@ import { HttpModule, Http, JsonpModule } from "@angular/http";
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 import { DropdownModule } from 'primeng/primeng';
 
-import { App } from './app';
+import { AppCompnent } from './app';
 import Routers from './routers';
 import { requestOptionsProvider } from './services/default-request-options.service';
 import { ServiceLocator } from './utils/ServiceLocator';
 import { BroadCaster} from './utils/BroadCaster';
 import { APP_CONFIG } from './types';
+
+import { StoreModule } from './store/module';
 
 import './styles/common.g.scss';
 
@@ -35,7 +37,8 @@ if (process.env.ENV === 'production' ) {
     RouterModule.forRoot(Routers),
     HttpModule,
     JsonpModule,
-    DropdownModule
+    DropdownModule,
+    StoreModule
   ],
   providers: [
       { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -45,10 +48,10 @@ if (process.env.ENV === 'production' ) {
       CookieService
     ],
   declarations: [
-    App,
+    AppCompnent,
   ],
   entryComponents: [],
-  bootstrap: [App]
+  bootstrap: [AppCompnent]
 })
 export class AppModule {
   constructor(private injector: Injector, private broadCaster: BroadCaster) {

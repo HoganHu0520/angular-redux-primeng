@@ -21,7 +21,7 @@ import { ServiceLocator } from './utils/ServiceLocator';
    `,
   styleUrls: ['app.scss']
 })
-export class App {
+export class AppCompnent {
   @HostBinding('class') public cssClass = '';
   @HostBinding('attr.size') size = '';
 
