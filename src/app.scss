@@ -1,0 +1,17 @@
+@import "~@/styles/mixin.g";
+@import "~@/styles/fonts.g";
+
+.router-container {
+  padding-bottom: 3.8rem;
+  min-height: 100%;
+}
+
+.footer {
+  text-align: center;
+  height: 3.8rem;
+  width: 100%;
+  line-height: 3.8rem;
+  background-color: #f1f4f5;
+  position: absolute;
+  bottom: 0;
+}
