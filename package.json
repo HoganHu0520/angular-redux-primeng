@@ -66,6 +66,7 @@
     "babel-polyfill": "^6.23.0",
     "canvas-toBlob": "^1.0.0",
     "events-polyfill": "^1.1.9",
+    "flux-standard-action": "^1.2.0",
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "intl": "^1.2.5",

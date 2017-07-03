@@ -8,10 +8,10 @@
 ## Lang
 `sass` & `typescript`
 ## Important Dependencies
-* Build Tool: `webpack@2.x`
+* Build Tool: `webpack@3.x`
 * Frontend Framework: `angular@4.x`
-* Frontend Translate: `ngx-translate`
 * Device Touch Support: `hammerjs`
+* Redux Framework: `angular-redux`, `redux`
 
 ## Folder Structure
 * `config`: webpack config files
@@ -35,6 +35,7 @@
 
 * Alias
   * `@`: `./src`
+  * `config`: `./config`
 
 * Loader for Styles
   * `xxx.scss`: encapsulation style

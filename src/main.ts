@@ -17,6 +17,7 @@ import { BroadCaster} from './utils/BroadCaster';
 import { APP_CONFIG } from './types';
 
 import { StoreModule } from './store/module';
+import { TestModule } from './actions/module';
 
 import './styles/common.g.scss';
 
@@ -38,6 +39,7 @@ if (process.env.ENV === 'production' ) {
     HttpModule,
     JsonpModule,
     DropdownModule,
+    TestModule,
     StoreModule
   ],
   providers: [

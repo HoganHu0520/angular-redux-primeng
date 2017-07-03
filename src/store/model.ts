@@ -1,3 +1,3 @@
 export interface IAppState {
-  test?: String;
+  self?: String;
 }

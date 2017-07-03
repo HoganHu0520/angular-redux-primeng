@@ -2,9 +2,12 @@ import { Component, EventEmitter, HostBinding, HostListener } from '@angular/cor
 import { PlatformLocation, LocationStrategy }from '@angular/common';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { select } from '@angular-redux/store';
+import { Observable } from 'rxjs/Observable';
 
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 
+import { TestAPIActions } from '@/actions/actions';
 import { BroadCaster} from './utils/BroadCaster';
 import { ServiceLocator } from './utils/ServiceLocator';
 
@@ -15,7 +18,8 @@ import { ServiceLocator } from './utils/ServiceLocator';
   ],
   template: `
     <div class="router-container">
-      <p-dropdown></p-dropdown>
+      <div>{{name | async}}</div>
+      <button (click)="changeName()">Test</button>
     </div>
     <div class="footer">© Hancock First 2017. All Rights Reserved</div>
    `,
@@ -24,6 +28,9 @@ import { ServiceLocator } from './utils/ServiceLocator';
 export class AppCompnent {
   @HostBinding('class') public cssClass = '';
   @HostBinding('attr.size') size = '';
+
+  @select(['self', 'value'])
+  readonly name: Observable<string>;
 
   private router: Router;
   private broadCaster: BroadCaster;
@@ -35,7 +42,8 @@ export class AppCompnent {
     private locationStrategy: LocationStrategy,
     private cookieService: CookieService,
     router: Router,
-    activateRoute: ActivatedRoute
+    activateRoute: ActivatedRoute,
+    private actions: TestAPIActions
   ) {
     let rootParam = this.parseQueryString();
     this.broadCaster = ServiceLocator.broadCaster;
@@ -43,6 +51,11 @@ export class AppCompnent {
     this.activateRoute = activateRoute;
 
     this.size = screenSize();
+  }
+
+  changeName() {
+    console.log('click');
+    this.actions.loadTest("test");
   }
 
   @HostListener('window:resize', ['$event'])
@@ -72,12 +85,14 @@ export class AppCompnent {
 function screenSize() {
   const width = window.innerWidth;
   let classTag = '';
-  if (width >= 1024) {
-    classTag = 'hc-l';
-  } else if (width < 1024 && width >= 600) {
-    classTag = 'hc-m';
+  if (width >= 90.063 * 16) {
+    classTag = 'screen-xl';
+  } else if (width >= 64.063 * 16) {
+    classTag = 'screen-lg';
+  } else if (width >= 40.063 * 16) {
+    classTag = 'screen-md';
   } else {
-    classTag = 'hc-s';
+    classTag = 'screen-sm'
   }
   return classTag;
 }
