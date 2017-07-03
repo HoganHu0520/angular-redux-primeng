@@ -2,16 +2,19 @@
 @import "~@/styles/fonts.g";
 
 .router-container {
-  padding-bottom: 3.8rem;
+  padding-bottom: 2rem;
   min-height: 100%;
 }
 
 .footer {
-  text-align: center;
-  height: 3.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  color: #fff;
+  height: 2rem;
   width: 100%;
-  line-height: 3.8rem;
-  background-color: #f1f4f5;
+  line-height: 2rem;
+  background-color: rgb(74, 177, 72);
   position: absolute;
   bottom: 0;
 }

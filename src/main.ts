@@ -15,6 +15,7 @@ import { requestOptionsProvider } from './services/default-request-options.servi
 import { ServiceLocator } from './utils/ServiceLocator';
 import { BroadCaster} from './utils/BroadCaster';
 import { APP_CONFIG } from './types';
+import PageDirective from './directives/page-directive';
 
 import { StoreModule } from './store/module';
 import { TestModule } from './actions/module';
@@ -51,6 +52,7 @@ if (process.env.ENV === 'production' ) {
     ],
   declarations: [
     AppCompnent,
+    PageDirective
   ],
   entryComponents: [],
   bootstrap: [AppCompnent]
