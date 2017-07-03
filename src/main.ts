@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule }   from '@angular/router';
 import { HttpModule, Http, JsonpModule } from "@angular/http";
 import { CookieService } from 'angular2-cookie/services/cookies.service';
-import { DropdownModule } from 'primeng/primeng';
 
 import { AppCompnent } from './app';
 import Routers from './routers';
@@ -15,10 +14,11 @@ import { requestOptionsProvider } from './services/default-request-options.servi
 import { ServiceLocator } from './utils/ServiceLocator';
 import { BroadCaster} from './utils/BroadCaster';
 import { APP_CONFIG } from './types';
-import PageDirective from './directives/page-directive';
 
-import { StoreModule } from './store/module';
-import { TestModule } from './actions/module';
+import { CoreModule } from './core';
+import { StoreModule } from './store';
+import { TestModule } from './actions';
+import { PageModule } from './pages';
 
 import './styles/common.g.scss';
 
@@ -39,9 +39,10 @@ if (process.env.ENV === 'production' ) {
     RouterModule.forRoot(Routers),
     HttpModule,
     JsonpModule,
-    DropdownModule,
     TestModule,
-    StoreModule
+    CoreModule,
+    StoreModule,
+    PageModule
   ],
   providers: [
       { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -52,7 +53,6 @@ if (process.env.ENV === 'production' ) {
     ],
   declarations: [
     AppCompnent,
-    PageDirective
   ],
   entryComponents: [],
   bootstrap: [AppCompnent]

@@ -17,9 +17,8 @@ import { ServiceLocator } from './utils/ServiceLocator';
     Title
   ],
   template: `
-    <div class="router-container" page-directive>
-      <div>{{name | async}}</div>
-      <button (click)="changeName()">Test</button>
+    <div class="router-container" min-height-mode="without-footer">
+      <router-outlet></router-outlet>
     </div>
     <div class="footer"><span>(c) Copyright 2007-2017</span><span>Hancock Software all rights reserved (Version: 5.1.10.15 (G000665))</span></div>
    `,

@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { TestAPIActions } from './actions';
 import { TestAPIEpics } from './epics';
 import { TestAPIService } from './service';
-import { StoreModule } from '@/store/module';
+import { StoreModule } from '@/store';
 
 @NgModule({
   declarations: [],
