@@ -8,7 +8,6 @@ import { Observable } from 'rxjs/Observable';
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 
 import { TestAPIActions } from '@/actions/actions';
-import { BroadCaster} from './utils/BroadCaster';
 import { ServiceLocator } from './utils/ServiceLocator';
 
 @Component({
@@ -32,7 +31,6 @@ export class AppCompnent {
   readonly name: Observable<string>;
 
   private router: Router;
-  private broadCaster: BroadCaster;
   private activateRoute: ActivatedRoute;
   private screenWidth: number = 0;
 
@@ -45,7 +43,6 @@ export class AppCompnent {
     private actions: TestAPIActions
   ) {
     let rootParam = this.parseQueryString();
-    this.broadCaster = ServiceLocator.broadCaster;
     this.router = router;
     this.activateRoute = activateRoute;
 
@@ -53,7 +50,6 @@ export class AppCompnent {
   }
 
   changeName() {
-    console.log('click');
     this.actions.loadTest("test");
   }
 

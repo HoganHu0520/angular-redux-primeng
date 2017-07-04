@@ -12,10 +12,9 @@ import { AppCompnent } from './app';
 import Routers from './routers';
 import { requestOptionsProvider } from './services/default-request-options.service';
 import { ServiceLocator } from './utils/ServiceLocator';
-import { BroadCaster} from './utils/BroadCaster';
 import { APP_CONFIG } from './types';
 
-import { CoreModule } from './core';
+import CoreModule from './core';
 import { StoreModule } from './store';
 import { TestModule } from './actions';
 import { PageModule } from './pages';
@@ -48,7 +47,6 @@ if (process.env.ENV === 'production' ) {
       { provide: LocationStrategy, useClass: HashLocationStrategy },
       { provide: APP_CONFIG, useValue: config},
       requestOptionsProvider,
-      BroadCaster,
       CookieService
     ],
   declarations: [
@@ -58,9 +56,8 @@ if (process.env.ENV === 'production' ) {
   bootstrap: [AppCompnent]
 })
 export class AppModule {
-  constructor(private injector: Injector, private broadCaster: BroadCaster) {
+  constructor(private injector: Injector) {
     ServiceLocator.injector = this.injector;
-    ServiceLocator.broadCaster = this.broadCaster;
   }
 }
 

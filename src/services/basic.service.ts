@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 import { ServiceLocator } from '@/utils/ServiceLocator';
-import { BroadCaster} from '@/utils/BroadCaster';
+import { BroadCaster} from '@/core/services/BroadCaster';
 import { APP_CONFIG, AppConfig } from '@/types';
 
 /**
@@ -23,14 +23,12 @@ export class BasicService {
   private options: RequestOptions;
   private http: Http;
   private config: AppConfig;
-  broadCaster: BroadCaster;
 
-  constructor() {
+  constructor(private broadCaster: BroadCaster) {
     this.config = ServiceLocator.injector.get(APP_CONFIG);
     this.baseurl = `${this.config.serviceAddress}/api`
     this.http = ServiceLocator.injector.get(Http);
     this.options = new RequestOptions({ headers: this.headers, search: this.params });
-    this.broadCaster = ServiceLocator.broadCaster;
   }
 
   /**

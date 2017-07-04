@@ -3,7 +3,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PasswordModule, InputTextModule, ButtonModule } from 'primeng/primeng';
 
-import { CoreModule } from '@/core';
+import CoreModule from '@/core';
 
 import { LoginPageComponent } from './page';
 

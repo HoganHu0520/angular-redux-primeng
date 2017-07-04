@@ -1,3 +1,4 @@
+import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs/Subject';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/filter';
@@ -11,6 +12,7 @@ interface BroadcastEvent {
 /**
  * Help class. Used for broadcast event and event listening.
  */
+@Injectable()
 export class BroadCaster {
   private _eventBus: Subject<BroadcastEvent>;
 
