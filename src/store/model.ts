@@ -1,3 +1,3 @@
 export interface IAppState {
-  self?: String;
+  landingPageStatus?: any;
 }

@@ -16,7 +16,6 @@ import { APP_CONFIG } from './types';
 
 import CoreModule from './core';
 import { StoreModule } from './store';
-import { TestModule } from './actions';
 import { PageModule } from './pages';
 
 import './styles/common.g.scss';
@@ -38,7 +37,6 @@ if (process.env.ENV === 'production' ) {
     RouterModule.forRoot(Routers),
     HttpModule,
     JsonpModule,
-    TestModule,
     CoreModule,
     StoreModule,
     PageModule

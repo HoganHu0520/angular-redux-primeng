@@ -1,15 +1,17 @@
 import { Injectable } from '@angular/core';
 import { combineEpics } from 'redux-observable';
 
-import { TestAPIEpics } from '@/actions/epics';
+import { LandingPageEpics } from '@/pages/landing/epics';
 
 @Injectable()
 export class RootEpics {
-  constructor(private testAPIEpics: TestAPIEpics) {}
+  constructor(
+    private landingPageEpics: LandingPageEpics
+  ) {}
 
   public createEpics(): any[] {
     return [
-      this.testAPIEpics.createEpic('self')
+      this.landingPageEpics.createEpic()
     ];
   }
 }

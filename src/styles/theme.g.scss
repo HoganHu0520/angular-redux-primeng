@@ -1,3 +1,48 @@
 @import '~font-awesome/css/font-awesome.css';
 @import '~primeng/resources/themes/omega/theme.css';
 @import '~primeng/resources/primeng.min.css';
+@import '~@/styles/variables.g';
+
+.ui-button {
+  background-color: $primary-color;
+}
+
+.ui-tabview {
+  &.ui-widget-content {
+    background-color: transparent;
+  }
+
+  &.ui-tabview-top > .ui-tabview-nav {
+    padding: 0.2em 0 0;
+
+    li.ui-state-active {
+      border-bottom: 1px solid transparent;
+      margin-bottom: 0;
+    }
+  }
+
+  .ui-tabview-panel {
+    border-width: 1px;
+
+    &.ui-widget-content {
+      border-color: #eaeaea;
+      background-color: #fff;
+    }
+  }
+}
+
+.ui-state-default {
+  border-color: #dfdfdf;
+
+  a {
+    color: #6a6a6c;
+  }
+}
+
+.ui-state-active {
+  border-color: #eaeaea;
+
+  a {
+    color: $primary-color;
+  }
+}

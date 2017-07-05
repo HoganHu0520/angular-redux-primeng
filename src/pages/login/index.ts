@@ -12,4 +12,4 @@ import { LoginPageComponent } from './page';
   exports: [LoginPageComponent],
   imports: [FormsModule, CoreModule, CommonModule, PasswordModule, InputTextModule, ButtonModule],
 })
-export class LoginModule {}
+export class LoginPageModule {}

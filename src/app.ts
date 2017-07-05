@@ -7,7 +7,6 @@ import { Observable } from 'rxjs/Observable';
 
 import { CookieService } from 'angular2-cookie/services/cookies.service';
 
-import { TestAPIActions } from '@/actions/actions';
 import { ServiceLocator } from './utils/ServiceLocator';
 
 @Component({
@@ -19,7 +18,6 @@ import { ServiceLocator } from './utils/ServiceLocator';
     <div class="router-container" min-height-mode="without-footer">
       <router-outlet></router-outlet>
     </div>
-    <div class="footer"><span>(c) Copyright 2007-2017</span><span>Hancock Software all rights reserved (Version: 5.1.10.15 (G000665))</span></div>
    `,
   styleUrls: ['app.scss']
 })
@@ -40,17 +38,12 @@ export class AppCompnent {
     private cookieService: CookieService,
     router: Router,
     activateRoute: ActivatedRoute,
-    private actions: TestAPIActions
   ) {
     let rootParam = this.parseQueryString();
     this.router = router;
     this.activateRoute = activateRoute;
 
     this.size = screenSize();
-  }
-
-  changeName() {
-    this.actions.loadTest("test");
   }
 
   @HostListener('window:resize', ['$event'])

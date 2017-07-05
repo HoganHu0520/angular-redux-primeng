@@ -1,0 +1,16 @@
+<div class="landing-page" min-height-mode>
+  <div class="header"></div>
+  <div class="content">
+    <div class="wrapper">
+      <p-tabView (onChange)="handleTabChange($event)" [activeIndex]="tabIndex | async">
+        <p-tabPanel header="Client Management">
+            Content 1
+        </p-tabPanel>
+        <p-tabPanel header="Job Management">
+            Content 2
+        </p-tabPanel>
+      </p-tabView>
+    </div>
+  </div>
+  <div class="footer">(C) Copyright 2007-2017 Hancock Software all rights reserved (Version: 5.1.10.15 (G000665))</div>
+</div>

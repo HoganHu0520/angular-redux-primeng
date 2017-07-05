@@ -56,3 +56,17 @@
     color: #646464;
   }
 }
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #fff;
+  height: 2rem;
+  width: 100%;
+  line-height: 2rem;
+  background-color: rgb(74, 177, 72);
+  position: absolute;
+  bottom: 0;
+  padding: 0 20px;
+}
