@@ -4,7 +4,37 @@
     <div class="wrapper">
       <p-tabView (onChange)="handleTabChange($event)" [activeIndex]="tabIndex | async">
         <p-tabPanel header="Client Management">
-            Content 1
+          <div class="data-modes-container">
+            <p-selectButton [options]="dataModes" [(ngModel)]="selectDataMode"></p-selectButton>
+          </div>
+          <div class="features-container">
+            <div class="left-features">
+              <button pButton type="button" class="ui-button-secondary" label="Delete Client"></button>
+              <p-splitButton label="More..." [model]="moreFeatures" styleClass="ui-button-secondary"></p-splitButton>
+            </div>
+            <div class="right-features">
+              <button pButton type="button" label="Add Client"></button>
+              <button pButton type="button" label="Export List"></button>
+              <button pButton type="button" label="Import Client Job"></button>
+            </div>
+          </div>
+          <div class="data-table-container">
+            <p-dataTable [value]="clients" [rows]="10" [paginator]="true"
+                styleClass="ui-paginator-left ui-reorderable" reorderableColumns="true" #dt
+                [rowsPerPageOptions]="[10,50,100]">
+              <p-column [style]="{'width':'38px'}" selectionMode="multiple"></p-column>
+              <p-column field="clientNumber" header="Client Number" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
+              <p-column field="firstName" header="First Name" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
+              <p-column field="city" header="City" [filter]="true" filterMatchMode="in" [sortable]="true">
+                  <ng-template pTemplate="filter" let-col>
+                      <p-multiSelect [options]="cities" defaultLabel="All Cities" styleClass="ui-column-filter"></p-multiSelect>
+                  </ng-template>
+              </p-column>
+            </p-dataTable>
+            <div class="bottom-features">
+              <p-multiSelect [options]="columns" defaultLabel="Show all Hide Columns"></p-multiSelect>
+            </div>
+          </div>
         </p-tabPanel>
         <p-tabPanel header="Job Management">
             Content 2

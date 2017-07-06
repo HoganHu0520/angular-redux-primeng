@@ -5,6 +5,44 @@
 
 .ui-button {
   background-color: $primary-color;
+
+  &.ui-button-secondary {
+    &.ui-state-default {
+      border-color: $primary-color;
+      color: $primary-color;
+    }
+
+    &:enabled:hover {
+      background-color: lighten($primary-color, 10%);
+      border-color: lighten($primary-color, 10%);
+      color: #fff;
+    }
+  }
+}
+
+.ui-widget-content .ui-button,
+.ui-widget.ui-button,
+.ui-button {
+  border-color: $primary-color;
+  background-color: $primary-color;
+}
+
+.ui-splitbutton.ui-button-secondary .ui-button {
+  &.ui-state-default {
+    border-color: $primary-color;
+    color: $primary-color;
+  }
+
+  &:enabled:hover {
+    background-color: lighten($primary-color, 10%);
+    border-color: lighten($primary-color, 10%);
+    color: #fff;
+  }
+}
+
+.ui-widget.ui-button:not(.ui-state-disabled):hover {
+  background-color: lighten($primary-color, 10%);
+  border-color: lighten($primary-color, 10%);
 }
 
 .ui-tabview {
@@ -33,6 +71,7 @@
 
 .ui-state-default {
   border-color: #dfdfdf;
+  color: #fff;
 
   a {
     color: #6a6a6c;
@@ -44,5 +83,76 @@
 
   a {
     color: $primary-color;
+  }
+}
+
+.ui-togglebutton.ui-button.ui-state-active,
+.ui-selectbutton .ui-button.ui-state-active {
+  background-color: $primary-color;
+  border-color: darken($primary-color, 10%);
+}
+
+p-multiselect {
+  display: flex;
+  align-items: center;
+  height: 39px;
+}
+
+.ui-multiselect {
+  .ui-multiselect-label {
+    margin-bottom: 0;
+    color: $primary-color;
+  }
+
+  .ui-multiselect-trigger {
+    color: $primary-color;
+  }
+}
+
+.ui-chkbox-box.ui-state-active {
+  background-color: darken($primary-color, 10%);
+  border-color: darken($primary-color, 20%);
+}
+
+.ui-paginator {
+  .ui-paginator-page.ui-state-active {
+    background-color: $primary-color;
+    border-color: darken($primary-color, 10%);
+  }
+
+  .ui-paginator-rpp-options {
+    color: $primary-color;
+  }
+}
+
+.ui-datatable {
+  th.ui-state-default {
+    background-color: $primary-color;
+  }
+
+  &.ui-paginator-left .ui-paginator {
+    text-align: left;
+  }
+
+  &.ui-reorderable .ui-datatable-thead > tr > th {
+    cursor: move;
+  }
+
+  tbody > tr.ui-widget-content.ui-state-highlight {
+    background-color: darken($primary-color, 10%);
+  }
+
+  .ui-sortable-column-icon {
+    cursor: pointer;
+  }
+
+  .ui-column-filter {
+    color: #555;
+  }
+
+  th.ui-sortable-column:not(.ui-state-active):hover {
+    background-color: lighten($primary-color, 10%);
+    border-color: lighten($primary-color, 10%);
+    color: #fff;
   }
 }

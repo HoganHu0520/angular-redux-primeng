@@ -1,3 +1,5 @@
+import { ILandingStatusModel } from '@/pages/landing';
+
 export interface IAppState {
-  landingPageStatus?: any;
+  landingPageStatus?: ILandingStatusModel;
 }
