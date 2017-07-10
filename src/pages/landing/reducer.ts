@@ -1,13 +1,26 @@
 import { LandingPageAction, LandingPageActions } from './actions';
+import { Column } from './models';
 
 export interface ILandingStatusModel {
   tabIndex: number;
+  clientManagement?: IClientManagementModel;
+}
+
+export interface IClientManagementModel {
+  frozenColumns: Column[];
+  showColumns?: Column[];
   dataMode?: string;
 }
 
 const INITIAL_MODEL: ILandingStatusModel = {
   tabIndex: 0,
-  dataMode: 'clientMode',
+  clientManagement: {
+    dataMode: 'clientMode',
+    frozenColumns: [
+      <Column> { label: 'Client Number', value: 'clientNumber' }
+    ],
+    showColumns: null,
+  }
 };
 
 export function createLandingPageReducer() {

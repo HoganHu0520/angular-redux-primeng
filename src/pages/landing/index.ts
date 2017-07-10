@@ -2,8 +2,9 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import {
-  TabViewModule, InputTextModule, ButtonModule, DropdownModule, SliderModule,
-  SelectButtonModule, SplitButtonModule, DataTableModule, MultiSelectModule
+  TabViewModule, InputTextModule, ButtonModule, DropdownModule,
+  SelectButtonModule, SplitButtonModule, DataTableModule, MultiSelectModule,
+  OverlayPanelModule, ListboxModule, CheckboxModule
 } from 'primeng/primeng';
 
 import CoreModule from '@/core';
@@ -12,7 +13,7 @@ import { LandingPageComponent } from './page';
 import { LandingPageEpics } from './epics';
 import { LandingPageActions } from './actions';
 
-export { ILandingStatusModel } from './reducer';
+export { ILandingStatusModel, IClientManagementModel } from './reducer';
 
 @NgModule({
   declarations: [LandingPageComponent],
@@ -22,7 +23,7 @@ export { ILandingStatusModel } from './reducer';
     FormsModule, CoreModule, CommonModule,
     InputTextModule, ButtonModule, TabViewModule, SelectButtonModule,
     SplitButtonModule, DataTableModule, DropdownModule, MultiSelectModule,
-    SliderModule
+    OverlayPanelModule, ListboxModule, CheckboxModule
   ],
 })
 export class LandingPageModule {}

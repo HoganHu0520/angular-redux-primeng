@@ -78,6 +78,10 @@
   }
 }
 
+.ui-state-highlight {
+  background-color: darken($primary-color, 10%);
+}
+
 .ui-state-active {
   border-color: #eaeaea;
 
@@ -92,12 +96,6 @@
   border-color: darken($primary-color, 10%);
 }
 
-p-multiselect {
-  display: flex;
-  align-items: center;
-  height: 39px;
-}
-
 .ui-multiselect {
   .ui-multiselect-label {
     margin-bottom: 0;
@@ -109,9 +107,16 @@ p-multiselect {
   }
 }
 
-.ui-chkbox-box.ui-state-active {
-  background-color: darken($primary-color, 10%);
-  border-color: darken($primary-color, 20%);
+.ui-chkbox-label {
+  color: $primary-color;
+}
+
+.ui-chkbox-box {
+  &.ui-state-active,
+  &.ui-state-active.ui-state-focus {
+    background-color: darken($primary-color, 10%);
+    border-color: darken($primary-color, 20%);
+  }
 }
 
 .ui-paginator {
@@ -155,4 +160,8 @@ p-multiselect {
     border-color: lighten($primary-color, 10%);
     color: #fff;
   }
+}
+
+.auto-width {
+  width: auto;
 }
