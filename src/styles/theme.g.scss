@@ -135,6 +135,24 @@
     background-color: $primary-color;
   }
 
+  .ui-datatable-thead > tr > th,
+  .ui-datatable-tfoot > tr > td,
+  .ui-datatable-data > tr > td {
+    border: none;
+  }
+
+  tbody > tr.ui-widget-content {
+    border: none;
+  }
+
+  .ui-datatable-scrollable-view.ui-datatable-unfrozen-view {
+    border-right: 1px solid #d5d5d5;
+
+    .ui-datatable-data.ui-widget-content {
+      border-left: none;
+    }
+  }
+
   &.ui-paginator-left .ui-paginator {
     text-align: left;
   }
@@ -144,7 +162,7 @@
   }
 
   tbody > tr.ui-widget-content.ui-state-highlight {
-    background-color: darken($primary-color, 10%);
+    background-color: #48b148;
   }
 
   .ui-sortable-column-icon {

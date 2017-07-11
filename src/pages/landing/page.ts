@@ -82,7 +82,6 @@ export class LandingPageComponent {
 
   constructor(private actions: LandingPageActions) {
     this.clientManagementModel$.subscribe(value => {
-      console.log('change');
       this._clientManagementModel = value;
       this._showColumns = this._clientManagementModel.showColumns == null
         ? this.columns.map(col => col.value)
@@ -119,16 +118,23 @@ export class LandingPageComponent {
   }
 
   handleFrozenColumnsChange(event) {
-    this._clientManagementModel.frozenColumns = this.columns.filter(col => {
-      const canFreeze = this._frozenColumns.indexOf(col.value) >= 0;
-      col.frozen = canFreeze;
-      return canFreeze;
-    });
-    this._clientManagementModel.showColumns.forEach((col: Column) => {
-      if (this._frozenColumns.indexOf(col.value) >= 0) {
-        col.frozen = true;
-      }
-    });
+    const tempShowColumns = this._clientManagementModel.showColumns;
+    this._clientManagementModel.showColumns = [];
     this.updateClientManagement();
+
+    setTimeout(() => {
+      this._clientManagementModel.showColumns = tempShowColumns;
+      this._clientManagementModel.frozenColumns = this.columns.filter(col => {
+        const canFreeze = this._frozenColumns.indexOf(col.value) >= 0;
+        col.frozen = canFreeze;
+        return canFreeze;
+      });
+      this._clientManagementModel.showColumns.forEach((col: Column) => {
+        if (this._frozenColumns.indexOf(col.value) >= 0) {
+          col.frozen = true;
+        }
+      });
+      this.updateClientManagement();
+    }, 100);
   }
 }
