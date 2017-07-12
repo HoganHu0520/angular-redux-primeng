@@ -23,9 +23,9 @@
                 styleClass="ui-paginator-left ui-reorderable" reorderableColumns="true" [style]="{'width':'100%'}"
                 scrollable="true" scrollHeight="200px" scrollWidth="100%" frozenWidth="30%" unfrozenWidth="70%" #dt>
               <p-column [style]="{'width':'38px'}" selectionMode="multiple" frozen="true"></p-column>
-              <p-column [style]="{'width':'500px'}" *ngFor="let col of showColumns" [field]="col.value" [header]="col.label" [filter]="true"
+              <p-column [style]="{'width':col.width}" *ngFor="let col of _clientManagementModel.columns | arrayFilter:filterCondition" [field]="col.value" [header]="col.label" [filter]="true"
                   filterPlaceholder="Search" [sortable]="true"
-                  filterMatchMode="col.filterMode" [frozen]="col.frozen">
+                  [filterMatchMode]="col.filterMode" [frozen]="col.frozen">
                 <ng-template pTemplate="filter" let-col *ngIf="col.value == 'city'">
                     <p-multiSelect [options]="cities" defaultLabel="All Cities" styleClass="ui-column-filter"></p-multiSelect>
                 </ng-template>
@@ -33,7 +33,7 @@
             </p-dataTable>
             <div class="bottom-features">
               <button type="text" pButton label="Freeze Columns" icon="fa-caret-down" iconPos="right" class="ui-button-secondary" (click)="freezeColOP.toggle($event)"></button>
-              <p-multiSelect [options]="columns" [filter]="false" [displaySelectedLabel]="false"
+              <p-multiSelect [options]="_clientManagementModel.columns" [filter]="false" [displaySelectedLabel]="false"
                   defaultLabel="Show all Hide Columns" (onChange)="handleShowColumnsChange($event)" [(ngModel)]="_showColumns"></p-multiSelect>
             </div>
           </div>
@@ -48,7 +48,7 @@
 </div>
 
 <p-overlayPanel styleClass="freeze-panel" #freezeColOP>
-  <p-listbox [options]="columns" styleClass="auto-width" multiple="multiple"
+  <p-listbox [options]="_clientManagementModel.columns" styleClass="auto-width" multiple="multiple"
       checkbox="checkbox" [(ngModel)]="_frozenColumns" (onChange)="handleFrozenColumnsChange($event)"></p-listbox>
   <div>
     <button type="text" pButton label="Customize"></button>

@@ -70,7 +70,7 @@
     "font-awesome": "^4.7.0",
     "hammerjs": "^2.0.8",
     "intl": "^1.2.5",
-    "primeng": "^4.1.0-rc.3",
+    "primeng": "0.0.2",
     "redux": "^3.7.1",
     "redux-logger": "^3.0.6",
     "redux-observable": "^0.14.1",

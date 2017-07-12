@@ -7,8 +7,7 @@ export interface ILandingStatusModel {
 }
 
 export interface IClientManagementModel {
-  frozenColumns: Column[];
-  showColumns?: Column[];
+  columns: Column[];
   dataMode?: string;
 }
 
@@ -16,10 +15,7 @@ const INITIAL_MODEL: ILandingStatusModel = {
   tabIndex: 0,
   clientManagement: {
     dataMode: 'clientMode',
-    frozenColumns: [
-      <Column> { label: 'Client Number', value: 'clientNumber' }
-    ],
-    showColumns: null,
+    columns: [],
   }
 };
 

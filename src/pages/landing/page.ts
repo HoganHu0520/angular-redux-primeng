@@ -2,8 +2,6 @@ import { Component, Input } from '@angular/core';
 import { select } from '@angular-redux/store';
 import { Observable } from 'rxjs/Observable';
 
-import { SelectItem } from 'primeng/primeng';
-
 import { LandingPageActions } from './actions';
 import { IClientManagementModel } from './reducer';
 import { Column } from './models';
@@ -25,6 +23,8 @@ export class LandingPageComponent {
 
   private _frozenColumns: string[];
 
+  filterCondition = (col:Column) => col.show;
+
   get selectDataMode() {
     return this._clientManagementModel.dataMode;
   }
@@ -32,21 +32,6 @@ export class LandingPageComponent {
   set selectDataMode(value: string) {
     this._clientManagementModel.dataMode = value;
     this.updateClientManagement();
-  }
-
-  get frozenColumns() {
-    return this._clientManagementModel.frozenColumns;
-  }
-
-  // set frozenColumns(values: Column[]) {
-  //   this._clientManagementModel.frozenColumns = values;
-  //   this.updateClientManagement();
-  // }
-
-  get showColumns() {
-    return this._clientManagementModel.showColumns == null
-      ? this.columns
-      : this._clientManagementModel.showColumns;
   }
 
   dataModes = [
@@ -70,9 +55,9 @@ export class LandingPageComponent {
   ];
 
   columns: Column[] = [
-    <Column> { label: 'Client Number', value: 'clientNumber' },
-    <Column> { label: 'First Name', value: 'firstName' },
-    <Column> { label: 'City', value: 'city', filterMode: 'in' }
+    new Column ({ label: 'Client Number', value: 'clientNumber', width: '100px' }),
+    new Column ({ label: 'First Name', value: 'firstName', width: '800px' }),
+    new Column ({ label: 'City', value: 'city', filterMode: 'in', width: '800px' })
   ];
 
   cities: any[] = [
@@ -83,20 +68,14 @@ export class LandingPageComponent {
   constructor(private actions: LandingPageActions) {
     this.clientManagementModel$.subscribe(value => {
       this._clientManagementModel = value;
-      this._showColumns = this._clientManagementModel.showColumns == null
+      this._showColumns = this._clientManagementModel.columns.length == 0
         ? this.columns.map(col => col.value)
-        : (<Column[]> this._clientManagementModel.showColumns).map(col => col.value);
-      this._clientManagementModel.showColumns = this._clientManagementModel.showColumns == null
-        ? this.columns
-        : this._clientManagementModel.showColumns;
-      this._frozenColumns = this._clientManagementModel.frozenColumns.map(col => col.value);
-      this.columns.forEach((col: Column) => {
-        if (this._frozenColumns.indexOf(col.value) >= 0) {
-          col.frozen = true;
-        }
-      });
+        : this._clientManagementModel.columns.map(col => col.value);
 
-      this.updateClientManagement();
+      if (this._clientManagementModel.columns.length == 0) {
+        this._clientManagementModel.columns = this.columns;
+        this.updateClientManagement();
+      }
     });
   }
 
@@ -113,28 +92,25 @@ export class LandingPageComponent {
   }
 
   handleShowColumnsChange(event) {
-    this._clientManagementModel.showColumns = this.columns.filter(col => this._showColumns.indexOf(col.value) >= 0);
+    this._clientManagementModel.columns.forEach(col => {
+      if (this._showColumns.indexOf(col.value) >= 0) {
+        col.show = true;
+      } else {
+        col.show = false;
+      }
+    });
     this.updateClientManagement();
   }
 
   handleFrozenColumnsChange(event) {
-    const tempShowColumns = this._clientManagementModel.showColumns;
-    this._clientManagementModel.showColumns = [];
-    this.updateClientManagement();
+    this._clientManagementModel.columns.forEach(col => {
+      if (this._frozenColumns.indexOf(col.value) >= 0) {
+        col.frozen = true;
+      } else {
+        col.frozen = false;
+      }
+    });
 
-    setTimeout(() => {
-      this._clientManagementModel.showColumns = tempShowColumns;
-      this._clientManagementModel.frozenColumns = this.columns.filter(col => {
-        const canFreeze = this._frozenColumns.indexOf(col.value) >= 0;
-        col.frozen = canFreeze;
-        return canFreeze;
-      });
-      this._clientManagementModel.showColumns.forEach((col: Column) => {
-        if (this._frozenColumns.indexOf(col.value) >= 0) {
-          col.frozen = true;
-        }
-      });
-      this.updateClientManagement();
-    }, 100);
+    this.updateClientManagement();
   }
 }
