@@ -99,6 +99,7 @@ export class LandingPageComponent {
         col.show = false;
       }
     });
+
     this.updateClientManagement();
   }
 
